@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Professional Intelligence Theme - Light Mode */
+    --background: 210 20% 98%;
+    --foreground: 220 39% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 39% 11%;
+
+    /* Navy Blue Primary */
+    --primary: 220 91% 14%;
+    --primary-foreground: 210 20% 98%;
+
+    /* Steel Gray Secondary */
+    --secondary: 215 16% 47%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 215 16% 47%;
+    --accent-foreground: 210 20% 98%;
+
+    /* Red for Anomalies */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 91% 14%;
+
+    --radius: 0.5rem;
+
+    /* IPDR Specific Colors */
+    --anomaly: 0 84% 60%; /* Red for anomalies */
+    --anomaly-glow: 0 100% 70%;
+    --normal-node: 220 91% 14%; /* Navy blue for normal nodes */
+    --active-node: 142 71% 45%; /* Green for active/selected */
+    --connection: 215 16% 47%; /* Steel gray for connections */
+    --intelligence-bg: 220 13% 4%; /* Deep navy background */
+    --intel-panel: 220 13% 6%;
+    --intel-border: 220 13% 15%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 39% 11%;
+    --sidebar-primary: 220 91% 14%;
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 220 39% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 220 91% 14%;
+  }
+
+  .dark {
+    /* Professional Intelligence Theme - Dark Mode */
+    --background: 220 13% 4%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 13% 6%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 13% 6%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 13% 4%;
+
+    --secondary: 215 16% 25%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 16% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 215 16% 25%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 16% 15%;
+    --input: 215 16% 15%;
+    --ring: 217 91% 60%;
+
+    /* Dark IPDR Colors */
+    --anomaly: 0 84% 60%; /* Red for anomalies */
+    --anomaly-glow: 0 100% 70%;
+    --normal-node: 217 91% 60%; /* Bright blue for normal nodes */
+    --active-node: 142 71% 45%; /* Green for active/selected */
+    --connection: 215 20% 65%; /* Light gray for connections */
+    --intelligence-bg: 220 13% 4%;
+    --intel-panel: 220 13% 6%;
+    --intel-border: 215 16% 15%;
+
+    --sidebar-background: 220 13% 6%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 220 13% 4%;
+    --sidebar-accent: 215 16% 15%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 215 16% 15%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer components {
+  /* IPDR Intelligence UI Components */
+  .intel-panel {
+    @apply bg-card border border-border rounded-lg p-4 shadow-lg;
+    background: hsl(var(--intel-panel));
+    border-color: hsl(var(--intel-border));
+  }
+
+  .anomaly-node {
+    color: hsl(var(--anomaly)) !important;
+    filter: drop-shadow(0 0 8px hsl(var(--anomaly-glow)));
+  }
+
+  .normal-node {
+    color: hsl(var(--normal-node)) !important;
+  }
+
+  .active-node {
+    color: hsl(var(--active-node)) !important;
+    filter: drop-shadow(0 0 6px hsl(var(--active-node)));
+  }
+
+  .intel-search {
+    @apply bg-input border border-border rounded-md px-3 py-2 text-sm;
+    background: hsl(var(--input));
+    border-color: hsl(var(--intel-border));
+  }
+
+  .intel-button {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+    @apply bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .intel-button-secondary {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+    @apply bg-secondary text-secondary-foreground hover:opacity-90;
+  }
+
+  .glow-anomaly {
+    animation: pulse-red 2s infinite;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { filter: drop-shadow(0 0 8px hsl(var(--anomaly))) brightness(1); }
+    50% { filter: drop-shadow(0 0 16px hsl(var(--anomaly-glow))) brightness(1.2); }
+  }
+}
