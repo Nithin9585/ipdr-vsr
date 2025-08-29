@@ -28,7 +28,7 @@ export function NodeDetailPanel({ node, links, onClose }: NodeDetailPanelProps) 
       initial={{ x: '100%' }}
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
-      className="fixed right-0 top-0 h-full w-80 intel-panel shadow-2xl z-50 overflow-y-auto"
+      className="fixed right-0 top-20 h-full w-80 intel-panel shadow-2xl z-50 overflow-y-auto"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-border">

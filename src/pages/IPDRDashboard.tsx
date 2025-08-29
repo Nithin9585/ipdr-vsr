@@ -190,7 +190,7 @@ export default function IPDRDashboard() {
                     {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="p-0 w-72 max-w-full">
+                <SheetContent side="left" className="p-0 w-72 max-w-full overflow-y-auto">
                   <div className="p-4 space-y-6">
                     <FilterPanel
                       filters={filters}
