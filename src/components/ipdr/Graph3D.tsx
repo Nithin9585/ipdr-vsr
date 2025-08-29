@@ -225,7 +225,7 @@ export function Graph3D({
       )}
 
       {/* Legend */}
-      <div className="absolute bottom-4 left-4 intel-panel">
+      <div className="sticky w-[25%] bottom-4 left-4 intel-panel z-20">
         <h4 className="font-semibold text-sm mb-2">Legend</h4>
         <div className="space-y-2 text-xs">
           <div className="flex items-center gap-2">

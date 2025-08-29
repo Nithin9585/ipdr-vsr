@@ -43,12 +43,17 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     /* IPDR Specific Colors */
-    --anomaly: 0 84% 60%; /* Red for anomalies */
+    --anomaly: 0 84% 60%;
+    /* Red for anomalies */
     --anomaly-glow: 0 100% 70%;
-    --normal-node: 220 91% 14%; /* Navy blue for normal nodes */
-    --active-node: 142 71% 45%; /* Green for active/selected */
-    --connection: 215 16% 47%; /* Steel gray for connections */
-    --intelligence-bg: 220 13% 4%; /* Deep navy background */
+    --normal-node: 220 91% 14%;
+    /* Navy blue for normal nodes */
+    --active-node: 142 71% 45%;
+    /* Green for active/selected */
+    --connection: 215 16% 47%;
+    /* Steel gray for connections */
+    --intelligence-bg: 220 13% 4%;
+    /* Deep navy background */
     --intel-panel: 220 13% 6%;
     --intel-border: 220 13% 15%;
 
@@ -93,11 +98,15 @@ All colors MUST be HSL.
     --ring: 217 91% 60%;
 
     /* Dark IPDR Colors */
-    --anomaly: 0 84% 60%; /* Red for anomalies */
+    --anomaly: 0 84% 60%;
+    /* Red for anomalies */
     --anomaly-glow: 0 100% 70%;
-    --normal-node: 217 91% 60%; /* Bright blue for normal nodes */
-    --active-node: 142 71% 45%; /* Green for active/selected */
-    --connection: 215 20% 65%; /* Light gray for connections */
+    --normal-node: 217 91% 60%;
+    /* Bright blue for normal nodes */
+    --active-node: 142 71% 45%;
+    /* Green for active/selected */
+    --connection: 215 20% 65%;
+    /* Light gray for connections */
     --intelligence-bg: 220 13% 4%;
     --intel-panel: 220 13% 6%;
     --intel-border: 215 16% 15%;
@@ -124,6 +133,7 @@ All colors MUST be HSL.
 }
 
 @layer components {
+
   /* IPDR Intelligence UI Components */
   .intel-panel {
     @apply bg-card border border-border rounded-lg p-4 shadow-lg;
@@ -166,7 +176,64 @@ All colors MUST be HSL.
   }
 
   @keyframes pulse-red {
-    0%, 100% { filter: drop-shadow(0 0 8px hsl(var(--anomaly))) brightness(1); }
-    50% { filter: drop-shadow(0 0 16px hsl(var(--anomaly-glow))) brightness(1.2); }
+
+    0%,
+    100% {
+      filter: drop-shadow(0 0 8px hsl(var(--anomaly))) brightness(1);
+    }
+
+    50% {
+      filter: drop-shadow(0 0 16px hsl(var(--anomaly-glow))) brightness(1.2);
+    }
   }
+}
+
+/* Enhanced Custom Scrollbar Styles with Navy Blue Theme */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1e3a8a transparent;
+}
+
+/* Webkit-based browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Removed background for transparency */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 12px rgba(30, 58, 138, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #3b82f6, #60a5fa);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.8), 0 0 24px rgba(96, 165, 250, 0.5);
+  transform: scale(1.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(45deg, #1d4ed8, #2563eb);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Animation for a dynamic pulsating effect */
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px rgba(30, 58, 138, 0.6); }
+  50% { box-shadow: 0 0 15px rgba(30, 58, 138, 0.9); }
+  100% { box-shadow: 0 0 5px rgba(30, 58, 138, 0.6); }
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  animation: pulse 1.8s ease-in-out infinite;
 }

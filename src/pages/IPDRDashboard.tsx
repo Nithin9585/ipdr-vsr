@@ -241,9 +241,9 @@ export default function IPDRDashboard() {
       </header>
 
       <div className="flex flex-col h-[calc(100vh-73px)]">
-        <div className="flex flex-1 flex-col md:flex-row">
+        <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
           {/* Left Sidebar (only on md and up) */}
-          <div className="hidden md:block w-80 border-r border-border bg-card/30 backdrop-blur-sm overflow-y-auto">
+          <div className="hidden md:block w-80 border-r border-border bg-card/30 backdrop-blur-sm overflow-y-auto custom-scrollbar">
             <div className="p-4 space-y-6">
               {/* Filter Section */}
               <FilterPanel
@@ -274,7 +274,7 @@ export default function IPDRDashboard() {
             </div>
           </div>
           {/* Main Graph Area */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative border-2 border-blue-500 bg-background/80 rounded-xl m-2 mt-10 p-4 md:p-8 max-w-[1200px] max-h-[700px] w-full mx-auto overflow-auto flex items-center justify-center custom-scrollbar">
             {sessions.length > 0 ? (
               <Graph3D
                 data={graphData}
