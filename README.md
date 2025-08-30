@@ -1,48 +1,47 @@
 
 ```mermaid
-graph TB
-    %% Frontend Components
-    subgraph "Frontend (React + TypeScript)"
-        A[CSV Upload Interface]
-        B[User Input/Prompt Interface]
-        C[Generate Report Interface]
-        D[Three.js 3D Graph Renderer]
-        E[Filters & Search]
-        F[Anomaly Visualization]
-        G[Node Interaction]
-    end
+flowchart LR
+  %% --- Frontend ---
+  subgraph Frontend ["Frontend (React + TypeScript)"]
+    Upload["CSV Upload"]
+    Prompt["User Prompt / Input"]
+    GenReport["Generate Report"]
+    Filters["Filters & Search"]
+    ThreeJS["Three.js 3D Graph Renderer"]
+    AnomalyVis["Anomaly Visualization"]
+    NodeInteract["Node Interaction"]
+  end
 
-    %% Backend Components
-    subgraph "Backend (FastAPI + Python)"
-        H[IPDR Parsing Endpoint]
-        I[AI Anomaly Detection Model]
-        J[PDF Report Generator]
-    end
+  %% --- Backend ---
+  subgraph Backend ["Backend (FastAPI + Python)"]
+    Parse["IPDR Parsing Endpoint"]
+    AIModel["AI Anomaly Detection (CatBoost)"]
+    PDFGen["PDF Report Generator (AI)"]
+  end
 
-    %% External Services
-    subgraph "Cloud Storage"
-        K[Amazon S3<br/>PDF Storage]
-    end
+  %% --- S3 ---
+  subgraph S3 ["Amazon S3"]
+    PDFStorage["PDF Storage"]
+  end
 
-    %% Connections
-    A --> H
-    H --> A
-    D --> F
-    A --> I
-    I --> A
-    A --> J
-    J --> K
-    K --> J
-    J --> A
-    G --> D
-    E --> D
+  %% --- Data Flow ---
+  Upload --> Parse
+  Parse --> ThreeJS
+  ThreeJS --> AnomalyVis
+  ThreeJS --> NodeInteract
+  Filters --> ThreeJS
+  Prompt --> AIModel
+  AIModel --> AnomalyVis
+  GenReport --> PDFGen
+  PDFGen --> PDFStorage
+  PDFStorage --> PDFGen
+  PDFGen --> GenReport
 
-    %% Styling
-    classDef frontend fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef backend fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef cloud fill:#fff3e0,stroke:#e65100,stroke-width:2px
+  %% --- Notes ---
+  ThreeJS -.-> N1["3D Graph: Nodes/Edges\nAnomalies in Red"]
+  AIModel -.-> N2["CatBoost ML Model\nAccuracy: 89.25%"]
+  PDFGen -.-> N3["AI-based Analysis\n(IP ↔ IP Activity)"]
+  PDFStorage -.-> N4["Stores Reports\nProvides Secure Link"]
 
-    class A,B,C,D,E,F,G frontend
-    class H,I,J backend
-    class K cloud
+
 ```
